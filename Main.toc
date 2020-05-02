@@ -1,0 +1,4 @@
+\babel@toc {english}{}
+\contentsline {section}{\numberline {1}Buildroot ou Yocto, la grande question.}{2}{section.1}
+\contentsline {paragraph}{}{2}{section*.4}
+\contentsline {section}{\numberline {2}Discussions et Conclusion}{3}{section.2}
