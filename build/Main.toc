@@ -6,4 +6,7 @@
 \contentsline {paragraph}{}{3}{section*.5}
 \contentsline {subsection}{\numberline {2.2}Yocto}{3}{subsection.2.2}
 \contentsline {paragraph}{}{3}{section*.6}
-\contentsline {section}{\numberline {3}Discussions et Conclusion}{4}{section.3}
+\contentsline {section}{\numberline {3}Construire son OS avec Yocto}{4}{section.3}
+\contentsline {subsection}{\numberline {3.1}First step}{4}{subsection.3.1}
+\contentsline {paragraph}{}{4}{section*.7}
+\contentsline {section}{\numberline {4}Discussions et Conclusion}{4}{section.4}

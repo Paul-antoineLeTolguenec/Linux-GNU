@@ -2,4 +2,6 @@
 \BOOKMARK [1][-]{section.2}{De Buildroot \340 Yocto}{}% 2
 \BOOKMARK [2][-]{subsection.2.1}{Buildroot}{section.2}% 3
 \BOOKMARK [2][-]{subsection.2.2}{Yocto}{section.2}% 4
-\BOOKMARK [1][-]{section.3}{Discussions et Conclusion}{}% 5
+\BOOKMARK [1][-]{section.3}{Construire son OS avec Yocto}{}% 5
+\BOOKMARK [2][-]{subsection.3.1}{First step}{section.3}% 6
+\BOOKMARK [1][-]{section.4}{Discussions et Conclusion}{}% 7
