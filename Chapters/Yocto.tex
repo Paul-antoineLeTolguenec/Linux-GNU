@@ -78,13 +78,46 @@ Nous allons maintenant expliquer comment cette flexibilité est permise.
 
 
 \paragraph{}
-Yocto intègre des parties développées conjointement pour OpenEmbedded, notamment BitBake, OpenEmbedded-Core et d'autres métadonnées. 
-Les éléments développés dans le cadre du projet, appelés "meta-yocto" et "meta-yocto-bsp", comprennent l'intégration des éclipses. 
-Ensemble, ils améliorent les outils d'OpenEmbedded, cette plateforme de référence pour la construction de systèmes avancés embarqués dans les HW est connue 
-sous le nom de Poky.
+Pour la conctruction de son OS avec Yocto, il faut choisir ces entrées.
+On a bien sûr les codes sources des derniers projets visibles sur le site de yocto.
+Mais le plus important étant les fichiers de configurations:
+\begin{itemize} 
 
-Pour développer des logiciels, nous avons besoin d'une chaîne d'outils (croisés) : les fichiers sources et les instructions sur la façon de les compiler. 
-C'est suffisant pour une source. 
-Pour plus de composants et de dépendances dans la compilation et le temps d'exécution, il faut augmenter la complexité et des étapes supplémentaires. 
-Bitbake est un agent ayant la capacité d'interpréter et d'exécuter les recettes d'amélioration, il calcule la chaîne des tâches nécessaires pour développer l'objectif défini et exécuté. 
+\item Caractéristiques de la machine cible (kernel, bootloader, format
+image, tuning compilateur ...)
+\item Caractéristiques de la distribution (paquets inclus, versions, choix
+entre alternatives, choix libc ...)
+\item Caractéristiques des layers (spécificité du projet)
+\item Configuration du build : machine, distribution, layers actives, format
+paquet ...
 
+\end{itemize} 
+La compilation de l'OS est réalisé par le moteur bitbake qui est une chaine de cross compilation codée en python.
+Bitbake permet des sorties d'une grande modularité.
+Ce qui permet d'embarquer un gestionnaire de paquets sur la cible
+Il permet aussi  de travailler en différentiel pour d'éventuelles mise à jour et un enrichissement permanent.
+En fait, avec bitbake l'OS se construit couche par couche.
+Un jeu de recettes permet de fabriquer les paquets logiciels.
+La notion de classes permet de regrouper les recettes.
+Il existe aussi les méta paquets qui ont la fonction de structurer
+(packagegroup)
+Les dépendances entre ces paquets sont décrites dans les
+recettes, ou déterminées automatiquement (librairies
+partagées)
+Bitbake aide aussi pour le calcul de l'arbre des dépendances pour fabriquer les
+paquets dans le bon ordre.
+
+Et c'est cette structure en couche qui permet cette flexibilité.
+Possibilité de créer sa propre layer (niveau
+société)
+Possibilité de créer des layers par affaire ou
+projet
+Le but est d'optimiser la réutilisation des recettes
+en évitant au maximum la duplication.
+Si une même recette présente dans plusieurs
+layers, c'est la layer de priorité supérieure qui
+s'impose.
+
+Et cette structure en couche permet une meilleur "réutilisabilité".
+Malgrès tout ces élèments d'explication, créer son OS avec Yocto peut s'avérer difficile.
+C'est pourquoi dans la prochaine partie, nous allons expliquer pas à pas la construction d'un OS avec yocto.
