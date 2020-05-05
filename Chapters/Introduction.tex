@@ -1,11 +1,9 @@
 \section{Introduction}
 \paragraph{}
-Dans le monde de l'embarqué, il est souvent utile de créer son propre système d'exploitation. En effet, les contraintes imposées par le système sont diverses et variées en fonction du projet.
-La construction d'un OS peut être longue et délicate. C'est pourquoi différents framework sont nées pour facilité cette construction d'OS personnalisé. Celui auqel nous allons nous intéresser est le projet Yocto.
-La création d'un système d'exploitation personnalisé sur Linux conçu pour les spécificités d'une carte embarquée et les exigences du futur produit peut s'avérer difficile, mais le projet Yocto a pour mission d'aider. 
-Le projet Yocto est un projet collaboratif en exploitation libre géré par la Fondation Linux. Mais la question qu'il convient de se poser est que dois-je utiliser pour l'OS de mon système.
-Dans cet article, nous allons tenter d'évaluer les avantages et inconvénients des différents projets en fonction des différents systèmes.
-Puis nous allons synthétiser le déroulement de la construction de l'OS pour les deux projets.
+Dans le monde de l'embarqué, il est souvent utile de créer son propre système d'exploitation. En effet, les contraintes de coûts et de consommation sont importante, amenant à travailler avec des processeurs et des mémoires très limités. Ces limitations rendent necessaire une grande optimisation de la partie logiciel, pour n'avoir que le stricte minimum. Pour cela, une séléction des composants de notre OS est nécessaire.
+Or la construction d'un OS peut être longue et délicate. C'est pourquoi différents framework sont nées pour faciliter cette construction d'OS personnalisé. Un des plus connu et des plus facile d'utilisation est Buildroot. Mais Yocto, un projet récent, est en train de s'imposer comme la référence. Yocto se veut bien plus modulaire que Buildroot, en proposant une vaste gamme de configurations. Nous nous proposons dans ce rapport de donner les éléments de décisions pour un choix pertinant entre les deux framework.
+
+
 \textbf{Repo GitHub}
 
 \url{https://github.com/Paul-antoineLeTolguenec/Linux-GNU.git}

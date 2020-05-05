@@ -1,4 +1,20 @@
 \babel@toc {english}{}
-\contentsline {section}{\numberline {1}Buildroot ou Yocto, la grande question.}{2}{section.1}
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}
 \contentsline {paragraph}{}{2}{section*.4}
-\contentsline {section}{\numberline {2}Discussions et Conclusion}{3}{section.2}
+\contentsline {section}{\numberline {2}Buildroot}{3}{section.2}
+\contentsline {paragraph}{}{3}{section*.5}
+\contentsline {section}{\numberline {3}Yocto: pour qui ? pourquoi?}{3}{section.3}
+\contentsline {subsection}{\numberline {3.1}Les outils disponibles pour construire son OS aujourd'hui}{3}{subsection.3.1}
+\contentsline {paragraph}{}{3}{section*.6}
+\contentsline {paragraph}{}{3}{section*.7}
+\contentsline {paragraph}{}{3}{section*.8}
+\contentsline {paragraph}{}{3}{section*.9}
+\contentsline {paragraph}{}{4}{section*.10}
+\contentsline {paragraph}{}{4}{section*.11}
+\contentsline {paragraph}{}{4}{section*.12}
+\contentsline {subsection}{\numberline {3.2}Yocto : un fonctionnement plus flexible}{4}{subsection.3.2}
+\contentsline {paragraph}{}{4}{section*.14}
+\contentsline {section}{\numberline {4}Construire son OS avec Yocto}{6}{section.4}
+\contentsline {subsection}{\numberline {4.1}First step}{6}{subsection.4.1}
+\contentsline {paragraph}{}{6}{section*.15}
+\contentsline {section}{\numberline {5}Discussions et Conclusion}{6}{section.5}
