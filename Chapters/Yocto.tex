@@ -1,123 +1,44 @@
-\section{Yocto: pour qui ? pourquoi?}
+\section{Yocto}
+Depuis quelques années, avec l'arrivée de l'Internet Of Things (IOT), le monde de l'industrie se tourne davantage vers Yocto. Nous allons voir quels sont les avantages et inconvénients par rapport à Buildroot.
+\subsection{La philosophie de Yocto}
+Yocto est basé sur differents projets fusionnés en 2010. Supporté par les grands noms de l'industrie (Linux Fondation, Intel, AMD...), il porte un certain nombre d'évolutions :
 
-Pour construire son OS aujourd'hui, il existe de nombreux outils. Un outils (ou plutôt ensemble d'outils) très utilisé est buildroot. Mais il en exeiste plein d'autre.
-Dans le monde de l'industrie le projet Yocto est de plus en plus présent et nous allons voir pourquoi.
-\subsection{Les outils disponibles pour construire son OS aujourd'hui}
-\paragraph{}
+\begin{itemize}
+\item Gestionnaire de paquets (deb, ipk ou rpm)
+\item Système de couches,chaque couche gérant un ensemble matériel ou logiciel. On peut retrouver ses couches \href{https://layers.openembedded.org}{\color{blue}Ici}. Elles sont directement utilisables par l'utilisateur.
+\item Utilisation de bitbake, permettant de paralléliser et donc d'optimiser la compilation
+\end{itemize}
 
-Comme nous l'avons dit, les outils permettant la création d'OS sont multiples.
-Voici une synthèse des principaux :
-\paragraph{}
-Do It Yourself : limité aux cas simples
-\begin{itemize} 
+Yocto permet de produire rapidement des distributions linux agiles, modulables et multi-platformes. Voyons ce que ces fonctionnalités permettent concretement.  
 
-\item Avantage = maîtrise totale
-
-\item Inconvénient = il faut tout faire
-\end{itemize} 
+\subsection{Avantages}
 
 \paragraph{}
-Buildroot : simple mais fonctionnellement moins
-riches que les autres
-\begin{itemize} 
-
-\item Adapté aux applications enfouies, pas très riches
-
-\item Difficile de travailler en différentiel : régénération complète du
-File System, pas de gestion de paquets
-
-\item Basé sur des Makefiles
-\end{itemize} 
-
+Pour bien comprendre les avantages offerts par Yocto, prenons un exemple. On suppose ici que nous voulons construire une distribution avec un serveur graphique basé sur X11. Nous allons présenter de manière très synthétiques les étapes pour Buildroot et Yocto. 
+\subsubsection{Configuration serveur graphique avec Buildroot}
 \paragraph{}
-Scratchbox : riche mais obsolète
+Pour configurer un serveur graphique avec Buildroot, il vous faudra naviguer dans le menuconfig et sélectionner les bonnes options. Mais comment savoir lesquelles ? Il faut soit avoir une très bonne connaissance de X11 pour connaître tous les composants à activer, soit se référerer à un \href{https://agentoss.wordpress.com/2011/03/06/building-a-tiny-x-org-linux-system-using-buildroot/}{\color{blue}tutoriel} ou documentation. Dans le meilleur des cas, la configuration prendra une demi-heure, dans le pire une bonne journée. 
 
+Si l'ajout de serveur graphique est à réaliser sur deux projets, il faudra refaire cette configuration pour les deux.
+
+\subsubsection{Configuration serveur graphique avec Yocto}
 \paragraph{}
-LTIB : outil utilisé par Freescale, mais changement en
-cours au profit du Yocto Project
+Avec Yocto, l'installation est beaucoup plus simple. On tape 'x11' dans la \href{https://layers.openembedded.org/layerindex/branch/master/recipes/?q=x11}{\color{blue}base de donées des recettes}, on télécharge celle qui nous convient le mieux, et on l'ajoute avec la commande suivante : 
 
-\begin{itemize} 
+\$ bitbake-layers add-layer ??/meta-layer/
 
-\item Versions logicielles datées (host + target)
+On compile et si le layer à été bien sélectionné, tout fonctionne. Dans le cas de deux projets, une même recettes convient aux deux. Si on la modifie elle le sera pour les deux.
 
-\end{itemize} 
+\subsubsection{Des fonctionnalités bien pratiques}
+C'est là l'énorme avantage de Yocto, une vaste communauté, avec des milliers de recettes existantes et maintenus à jour. Yocto permet donc de se focaliser sur le code métier, la vraie valeur ajoutée du produit développé et évite de devoir réinventer la roue à chaque fois. Le gestionnaire de paquets permet également de mettre à jours les différents composants via une simple commande, sans trop s'inquiéter des dépendances, et sans avoir besoin de recompiler l'image.
 
 
 
 \paragraph{}
-OpenEmbedded : Ancêtre commun issu du projet Open Zaurus, toujours actif.
-\begin{itemize} 
+Le système de couche permet également une grande flexibilité en terme de fonctionnalités. Dans le cas d'une gamme de produit, avec une même base mais des options propres à chaque produit, l'utilisation des couches facilite le développement.
 
-\item Base de distributions variées
-
-\end{itemize} 
-\paragraph{}
-Et il en existe encore bien d'autre. Mais alors avec cette forte diversité pourquoi choisir YOCTO ?
-Les avantages sont multiples bien sûr, mais le plus important est son côté modulable.
-Aussi, ce projet permet de mettre en place de manière industrielle des outils de création de distribution Linux embarqué. C'est donc un projet oprmisé pour le monde de l'industrie.
-En effet, du fait de l'évolution des compasants d'un système il faut avoir une certaine flexibilité sur l'OS que l'on conçoit. Yocto permet cette flexibilité.
-De plus, le projet Yocto est sous l'égide de la Linux Foundation ce qui permet une certaine garantie de fonctionnement.
-On voit donc un peu plus pourquoi Yocto est apprécié des industriels.
-Mais comme nous l'avons vu ce projet ce distingue notamment de par sa fléxibilité.
-Nous allons maintenant expliquer comment cette flexibilité est permise.
-
-
-
-
-
-\subsection{Yocto : un fonctionnement plus flexible}
-\begin{figure}[ht!]
-
-\includegraphics[width=\linewidth]{yocto.png} % Figure image 
-
-\caption{crédit: Yocto project} % Figure caption 
-
-
-\label{Project Yocto} % Label for referencing with \ref{bear} 
+\begin{figure}[h!]
+    \centering
+    \includegraphics[width=10cm]{Images/reutilisable yocto.png}
+    \caption{Système de couches permettant une factorisation. Credit : C. Charreyre}
 \end{figure}
-
-
-\paragraph{}
-Pour la conctruction de son OS avec Yocto, il faut choisir ces entrées.
-On a bien sûr les codes sources des derniers projets visibles sur le site de yocto.
-Mais le plus important étant les fichiers de configurations:
-\begin{itemize} 
-
-\item Caractéristiques de la machine cible (kernel, bootloader, format
-image, tuning compilateur ...)
-\item Caractéristiques de la distribution (paquets inclus, versions, choix
-entre alternatives, choix libc ...)
-\item Caractéristiques des layers (spécificité du projet)
-\item Configuration du build : machine, distribution, layers actives, format
-paquet ...
-
-\end{itemize} 
-La compilation de l'OS est réalisé par le moteur bitbake qui est une chaine de cross compilation codée en python.
-Bitbake permet des sorties d'une grande modularité.
-Ce qui permet d'embarquer un gestionnaire de paquets sur la cible
-Il permet aussi  de travailler en différentiel pour d'éventuelles mise à jour et un enrichissement permanent.
-En fait, avec bitbake l'OS se construit couche par couche.
-Un jeu de recettes permet de fabriquer les paquets logiciels.
-La notion de classes permet de regrouper les recettes.
-Il existe aussi les méta paquets qui ont la fonction de structurer
-(packagegroup)
-Les dépendances entre ces paquets sont décrites dans les
-recettes, ou déterminées automatiquement (librairies
-partagées)
-Bitbake aide aussi pour le calcul de l'arbre des dépendances pour fabriquer les
-paquets dans le bon ordre.
-
-Et c'est cette structure en couche qui permet cette flexibilité.
-Possibilité de créer sa propre layer (niveau
-société)
-Possibilité de créer des layers par affaire ou
-projet
-Le but est d'optimiser la réutilisation des recettes
-en évitant au maximum la duplication.
-Si une même recette présente dans plusieurs
-layers, c'est la layer de priorité supérieure qui
-s'impose.
-
-Et cette structure en couche permet une meilleur "réutilisabilité".
-Malgrès tout ces élèments d'explication, créer son OS avec Yocto peut s'avérer difficile.
-C'est pourquoi dans la prochaine partie, nous allons expliquer pas à pas la construction d'un OS avec yocto.
